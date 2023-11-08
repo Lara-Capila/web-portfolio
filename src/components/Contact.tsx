@@ -6,6 +6,8 @@ import GithubIcon from "public/github-icon.svg";
 import LinkedinIcon from "public/linkedin-icon.svg";
 import { FormEventHandler, useState } from "react";
 import { useSectionInView } from "../hooks/useSectionInView";
+import Input from "./Input";
+import Label from "./Label";
 import SubmitFormButton from "./SubmitButton";
 
 const Contact = () => {
@@ -78,49 +80,24 @@ const Contact = () => {
 					</p>
 				) : (
 					<form className="flex flex-col" onSubmit={handleSubmit}>
+						<Input
+							name="email"
+							id="email"
+							placeholder="teste@teste.com"
+							label="Seu email"
+						/>
+						<Input
+							name="subject"
+							id="subject"
+							placeholder="Diga oi"
+							label="Assunto"
+						/>
 						<div className="mb-6">
-							<label
-								htmlFor="email"
-								className="text-white block mb-2 text-sm font-medium"
-							>
-								Seu email
-							</label>
-							<input
-								name="email"
-								type="email"
-								id="email"
-								required
-								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-								placeholder="teste@teste.com"
-							/>
-						</div>
-						<div className="mb-6">
-							<label
-								htmlFor="subject"
-								className="text-white block text-sm mb-2 font-medium"
-							>
-								Assunto
-							</label>
-							<input
-								name="subject"
-								type="text"
-								id="subject"
-								required
-								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-								placeholder="Diga oi"
-							/>
-						</div>
-						<div className="mb-6">
-							<label
-								htmlFor="message"
-								className="text-white block text-sm mb-2 font-medium"
-							>
-								Mensagem
-							</label>
+							<Label htmlFor="message">Mensagem</Label>
 							<textarea
 								name="message"
 								id="message"
-								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+								className="input"
 								placeholder="Vamos conversar..."
 								maxLength={500}
 							/>

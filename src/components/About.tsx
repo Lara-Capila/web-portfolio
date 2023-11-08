@@ -4,38 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useTransition } from "react";
 import { useSectionInView } from "../hooks/useSectionInView";
+import { tabButtonsAboutSection, tabDataAboutSection } from "../utils/data";
+import { Tabs } from "../utils/types";
 import GradientText from "./GradientText";
 import TabButton from "./TabButton";
-
-enum Tabs {
-	"skills" = "skills",
-	"education" = "education",
-	"certifications" = "certifications",
-}
-
-interface TabData {
-	id: Tabs;
-	content: string[];
-}
-
-interface TabButtons extends Omit<TabData, "content"> {
-	label: string;
-}
-
-const TAB_BUTTONS: TabButtons[] = [
-	{
-		label: "Skills",
-		id: Tabs.skills,
-	},
-	{
-		label: "Formação",
-		id: Tabs.education,
-	},
-	{
-		label: "Certificados",
-		id: Tabs.certifications,
-	},
-];
 
 const fadeInAnimationVariants = {
 	initial: {
@@ -50,34 +22,6 @@ const fadeInAnimationVariants = {
 		},
 	}),
 };
-
-const TAB_DATA: TabData[] = [
-	{
-		id: Tabs.skills,
-		content: [
-			"Javascript",
-			"HTML",
-			"CSS",
-			"React",
-			"Next",
-			"Typescript",
-			"TailwindCSS",
-			"GraphQL",
-			"Redux",
-		],
-	},
-	{
-		id: Tabs.education,
-		content: [
-			"Desenvolvimento de Software - Trybe",
-			"Análise e Desenvolvimento de Sistemas - Estácio",
-		],
-	},
-	{
-		id: Tabs.certifications,
-		content: ["Desenvolvimento Web - Trybe"],
-	},
-];
 
 const About = () => {
 	const [activeTab, setActiveTab] = useState<Tabs>(Tabs.skills);
@@ -121,7 +65,7 @@ const About = () => {
 						compartilhar conhecimento e novos desafios.
 					</p>
 					<div className="flex flex-row mt-8">
-						{TAB_BUTTONS.map((tabButton) => (
+						{tabButtonsAboutSection.map((tabButton) => (
 							<TabButton
 								key={tabButton.id}
 								selectTab={() => handleTabChange(tabButton.id)}
@@ -132,8 +76,9 @@ const About = () => {
 						))}
 					</div>
 					<ul className="mt-8 flex flex-wrap justify-center items-center gap-4">
-						{TAB_DATA.find((t) => t.id === activeTab)?.content.map(
-							(dataContent, index) => (
+						{tabDataAboutSection
+							.find((t) => t.id === activeTab)
+							?.content.map((dataContent, index) => (
 								<motion.li
 									variants={fadeInAnimationVariants}
 									initial="initial"
@@ -147,8 +92,7 @@ const About = () => {
 								>
 									{dataContent}
 								</motion.li>
-							)
-						)}
+							))}
 					</ul>
 				</div>
 			</div>

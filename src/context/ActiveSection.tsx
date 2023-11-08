@@ -1,9 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { navLinks } from "../utils/data";
-
-export type SectionName = (typeof navLinks)[number]["title"];
+import { SectionName } from "../utils/types";
 
 type ActiveSectionContextProviderProps = {
 	children: React.ReactNode;

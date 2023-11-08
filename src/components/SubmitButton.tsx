@@ -13,7 +13,12 @@ const SubmitFormButton = () => {
       "
 		>
 			Enviar
-			<PaperAirplaneIcon className="h-3.5 w-3.5 -rotate-45 opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+			<PaperAirplaneIcon
+				className="
+					h-3.5 w-3.5 -rotate-45 opacity-70 transition-all 
+					group-hover:translate-x-1 group-hover:-translate-y-1
+				"
+			/>
 		</button>
 	);
 };
