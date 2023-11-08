@@ -13,7 +13,7 @@ const Hero = () => {
 		<section
 			ref={ref}
 			id="home"
-			className="grid grid-cols-1 sm:grid-cols-12 pb-16 scroll-mt-[100rem]"
+			className="grid grid-cols-2 sm:flex sm:justify-between h-screen scroll-mt-[100rem]"
 		>
 			<motion.div
 				initial={{ opacity: 0, scale: 0 }}
@@ -21,14 +21,14 @@ const Hero = () => {
 				transition={{ duration: 0.5 }}
 				className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
 			>
-				<h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
+				<h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-tight font-extrabold">
 					<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
 						Olá, sou
 					</span>
 					<br />
 					Lara Capila
 				</h1>
-				<p className="text-grayText text-base sm:text-lg lg-text-xl mb-6 max-w-3xl">
+				<p className="text-grayText text-base sm:text-lg lg:text-xl mb-6 max-w-3xl">
 					Sou desenvolvedora
 					<GradientText text="Front End" margin="ml-1" /> com
 					<GradientText text="2 anos de experiência" margin="ml-1 mr-1" />

@@ -10,6 +10,10 @@ export const navLinks: NavLinkProps[] = [
 		href: "#about",
 	},
 	{
+		title: "Habilidades e Formação",
+		href: "#skillsAndEducation",
+	},
+	{
 		title: "Projetos",
 		href: "#projects",
 	},

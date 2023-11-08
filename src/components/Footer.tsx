@@ -4,10 +4,10 @@ const Footer = () => {
 			className="
 				footer border z-10 border-t-[#33353F] 
 				border-l-transparent border-r-transparent border-b-transparent 
-				text-white p-10 text-center
+				text-white p-6 text-center
 			"
 		>
-			<p className="text-slate-600">Todos os direitos reservados.</p>
+			<p className="text-slate-600 text-sm">Todos os direitos reservados.</p>
 		</footer>
 	);
 };

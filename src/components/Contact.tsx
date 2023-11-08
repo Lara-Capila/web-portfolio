@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GithubIcon from "public/github-icon.svg";
 import LinkedinIcon from "public/linkedin-icon.svg";
+import WhatsAppIcon from "public/whatsapp-icon.svg";
 import { FormEventHandler, useState } from "react";
 import { useSectionInView } from "../hooks/useSectionInView";
 import Input from "./Input";
@@ -56,18 +57,32 @@ const Contact = () => {
 					pergunta ou apenas quiser dizer olá, farei o meu melhor para
 					responder!
 				</p>
-				<div className="socials flex flex-row gap-2">
+				<div className="socials flex items-center flex-row gap-4">
 					<Link
 						href="https://github.com/Lara-Capila"
 						className="hover:scale-110"
+						target="_blank"
 					>
 						<Image src={GithubIcon} alt="GitHub icon" />
 					</Link>
-					<Link href="https://www.linkedin.com/in/lara-capila/">
+					<Link href="https://www.linkedin.com/in/lara-capila/" target="_blank">
 						<Image
 							src={LinkedinIcon}
 							alt="Linkedin icon"
 							className="hover:scale-110"
+						/>
+					</Link>
+					<Link
+						href="https://wa.me/5531989201693"
+						className="ml-1"
+						target="_blank"
+					>
+						<Image
+							src={WhatsAppIcon}
+							alt="WhatsApp icon"
+							className="hover:scale-110"
+							width={40}
+							height={40}
 						/>
 					</Link>
 				</div>

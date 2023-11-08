@@ -9,14 +9,14 @@ const NavLink = ({ href, title }: NavLinkProps) => {
 
 	return (
 		<motion.li
-			className="h-3/4 flex items-center justify-center relative"
+			className="h-3/4 flex items-center justify-center relative px-3 py-3"
 			key={title}
 			initial={{ y: -100, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 		>
 			<Link
 				className={`
-					flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition
+					flex w-full items-center justify-center hover:text-gray-950 transition
 					${activeSection === title ? "text-black" : ""}
 				`}
 				href={href}

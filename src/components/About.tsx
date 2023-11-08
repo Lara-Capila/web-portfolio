@@ -2,99 +2,77 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useTransition } from "react";
 import { useSectionInView } from "../hooks/useSectionInView";
-import { tabButtonsAboutSection, tabDataAboutSection } from "../utils/data";
-import { Tabs } from "../utils/types";
 import GradientText from "./GradientText";
-import TabButton from "./TabButton";
-
-const fadeInAnimationVariants = {
-	initial: {
-		opacity: 0,
-		y: 100,
-	},
-	animate: (index: number) => ({
-		opacity: 1,
-		y: 0,
-		transition: {
-			delay: 0.5 * index,
-		},
-	}),
-};
 
 const About = () => {
-	const [activeTab, setActiveTab] = useState<Tabs>(Tabs.skills);
-	const [, startTransiton] = useTransition();
-
 	const { ref } = useSectionInView("Sobre");
 
-	const handleTabChange = (id: string) => {
-		startTransiton(() => setActiveTab(id as Tabs));
-	};
-
 	return (
-		<section ref={ref} className="text-white scroll-mt-14" id="about">
-			<div
-				className="
-          gap-8 items-center py-8
-          md:grid md:grid-cols-2 
-          xl:gap-16 sm:py-16
-        "
-			>
-				<Image
-					src="/images/me-unzoomed.jpg"
-					alt="working"
-					width={400}
-					height={400}
-					className="scale-x-[-1] rounded-3xl shadow-md shadow-slate-500"
-				/>
-				<div>
-					<h2 className="text-4xl font-bold text-white mb-4">Sobre mim</h2>
-					<p className="text-base lg:text-lg text-left">
-						Sou desenvolvedora <GradientText text="Front End" margin="mr-1" />
-						apaixonda por criar aplicações web interativas e responsivas. Tenho
-						experiência com
-						<GradientText
-							text="HTML, CSS, React, Next, Tailwind e Git"
-							margin="ml-1"
+		<section ref={ref} className="text-white scroll-mt-14 py-8" id="about">
+			<div className="flex flex-col items-center justify-center">
+				<h2 className="text-4xl font-bold text-white mb-16">Sobre mim</h2>
+				<div className="relative">
+					<motion.div
+						initial={{ opacity: 0, scale: 0 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{
+							type: "tween",
+							duration: 0.2,
+						}}
+					>
+						<Image
+							src="/images/eu.jpeg"
+							alt="working"
+							width={200}
+							height={200}
+							quality="95"
+							className="w-52 h-52 shadow-md shadow-slate-500 border border-white rounded-full object-cover"
 						/>
-						. Aprendo rápido e estou sempre em busca de me
-						<GradientText text="manter atualizada" margin="ml-1" />. Gosto de
-						<GradientText text="trabalhar em equipe" margin="ml-1" />,
-						compartilhar conhecimento e novos desafios.
-					</p>
-					<div className="flex flex-row mt-8">
-						{tabButtonsAboutSection.map((tabButton) => (
-							<TabButton
-								key={tabButton.id}
-								selectTab={() => handleTabChange(tabButton.id)}
-								active={activeTab === tabButton.id}
-							>
-								{tabButton.label}
-							</TabButton>
-						))}
-					</div>
-					<ul className="mt-8 flex flex-wrap justify-center items-center gap-4">
-						{tabDataAboutSection
-							.find((t) => t.id === activeTab)
-							?.content.map((dataContent, index) => (
-								<motion.li
-									variants={fadeInAnimationVariants}
-									initial="initial"
-									animate="animate"
-									custom={index}
-									viewport={{
-										once: true,
-									}}
-									key={index}
-									className="px-3 py-2 border border-white rounded-full"
-								>
-									{dataContent}
-								</motion.li>
-							))}
-					</ul>
+					</motion.div>
+
+					<motion.span
+						className="absolute bottom-2 right-4 text-4xl"
+						initial={{ opacity: 0, scale: 0 }}
+						animate={{ opacity: 1, scale: 1 }}
+						whileHover={{ scale: 1.3 }}
+						transition={{
+							type: "spring",
+							delay: 0.1,
+							duration: 0.7,
+						}}
+					>
+						👋
+					</motion.span>
 				</div>
+			</div>
+			<div className="flex flex-col items-center">
+				<p className="text-base lg:text-lg mt-16 text-center max-w-[50rem]">
+					Após uma mudança no início da pandemia, me
+					<GradientText
+						text="apaixonei pelo desenvolvimento Front-End"
+						margin="mx-1"
+					/>
+					e decidi seguir essa carreira. Obtive minha formação na Trybe, onde me
+					tornei uma desenvolvedora júnior em um ano{" "}
+					<span className="italic">(intenso)</span> de estudos. Estou concluindo
+					a graduação em{" "}
+					<GradientText text="Análise e Desenvolvimento de Sistemas" />,
+					previsto para o final de 2023.
+					<br />
+					<br />
+					Com <GradientText text="2 anos de experiência" /> como
+					<GradientText text="Desenvolvedora Front-End" margin="ml-1" />,
+					trabalho com tecnologias como
+					<GradientText text="React" margin="ml-1" />,
+					<GradientText text="Typescript" margin="ml-1" />,
+					<GradientText text="Next.js" margin="ml-1" />,
+					<GradientText text="TailwindCSS" margin="ml-1" /> e
+					<GradientText text="testes" margin="ml-1" />, além de estudar
+					<span className="underline ml-1">React Native</span>. Estou sempre em
+					busca de novas oportunidades na área de desenvolvimento e ansiosa para
+					continuar crescendo profissionalmente.
+				</p>
 			</div>
 		</section>
 	);
