@@ -35,12 +35,12 @@ const Hero = () => {
 					com React (Next.js). Gosto de criar sites e aplicativos (React
 					Native).
 				</p>
-				<div className="flex flex-wrap gap-2">
+				<div className="flex flex-wrap gap-4">
 					<Link
 						href="#contact"
 						className="
 							px-6 py-3 rounded-full
-							mr-4 w-full sm:w-fit
+							w-full sm:w-fit
 							bg-gradient-to-br from-blue-500 via-primary-500
 							to-secondary-500 hover:bg-slate-200
 							text-white hover:scale-110
@@ -68,7 +68,7 @@ const Hero = () => {
 				initial={{ opacity: 0, scale: 0 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ duration: 0.5 }}
-				className="col-span-4 place-self-center mt-4 lg:mt-0"
+				className="col-span-4 place-self-center mt-4 lg:mt-0 hidden sm:block"
 			>
 				<div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[370px] lg:h-[370px] relative">
 					<Image

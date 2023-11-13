@@ -14,7 +14,7 @@ const Navbar = () => {
 			<ul
 				className="
 					flex flex-wrap items-center justify-center gap-y-1 
-					text-[0.9rem] font-medium text-gray-500 
+					text-[0.9rem] font-medium text-[#ffffffd9] 
 					w-[22rem] sm:w-[initial] sm:flex-nowrap sm:gap-5
 				"
 			>

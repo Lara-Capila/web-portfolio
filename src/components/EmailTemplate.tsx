@@ -17,9 +17,6 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 					padding: "20px",
 					textAlign: "center",
 					width: "700px",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
 				}}
 			>
 				<h1>Você recebeu essa mensagem do seu fomulário de contato</h1>

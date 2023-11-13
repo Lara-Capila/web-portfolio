@@ -13,11 +13,14 @@ import SubmitFormButton from "./SubmitButton";
 
 const Contact = () => {
 	const [emailSubmitted, setEmailSubmitted] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const { ref } = useSectionInView("Contato");
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
+		setLoading(true);
+
 		const data = {
 			email: event.currentTarget.email.value,
 			subject: event.currentTarget.subject.value,
@@ -37,9 +40,10 @@ const Contact = () => {
 		const response = await fetch(endpoint, options);
 
 		if (response.status === 200) {
-			console.log("Message sent.");
 			setEmailSubmitted(true);
 		}
+
+		setLoading(false);
 	};
 
 	return (
@@ -90,8 +94,8 @@ const Contact = () => {
 
 			<div>
 				{emailSubmitted ? (
-					<p className="text-green-500 text-sm mt-2">
-						Email sent successfully!
+					<p className="text-green-500 text-base mt-2">
+						Email enviado com sucesso!
 					</p>
 				) : (
 					<form className="flex flex-col" onSubmit={handleSubmit}>
@@ -100,24 +104,29 @@ const Contact = () => {
 							id="email"
 							placeholder="teste@teste.com"
 							label="Seu email"
+							disabled={loading}
+							type="email"
 						/>
 						<Input
 							name="subject"
 							id="subject"
 							placeholder="Diga oi"
 							label="Assunto"
+							disabled={loading}
 						/>
 						<div className="mb-6">
 							<Label htmlFor="message">Mensagem</Label>
 							<textarea
 								name="message"
 								id="message"
-								className="input"
+								className="input data-[disabled=true]:bg-gray-500"
 								placeholder="Vamos conversar..."
 								maxLength={500}
+								disabled={loading}
+								data-disabled={loading}
 							/>
 						</div>
-						<SubmitFormButton />
+						<SubmitFormButton loading={loading} />
 					</form>
 				)}
 			</div>

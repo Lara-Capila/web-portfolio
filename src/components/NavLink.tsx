@@ -16,8 +16,8 @@ const NavLink = ({ href, title }: NavLinkProps) => {
 		>
 			<Link
 				className={`
-					flex w-full items-center justify-center hover:text-gray-950 transition
-					${activeSection === title ? "text-black" : ""}
+					flex w-full text-center hover:text-white transition leading-none
+					${activeSection === title ? "text-black hover:text-black" : ""}
 				`}
 				href={href}
 				onClick={() => {

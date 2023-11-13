@@ -13,10 +13,11 @@ const Input = ({ name, id, placeholder, label, ...rest }: InProps) => {
 		<div className="mb-6">
 			{label && <Label htmlFor={id}>{label}</Label>}
 			<input
+				data-disabled={rest.disabled}
 				name={name}
 				id={id}
 				required
-				className="input"
+				className="input data-[disabled=true]:bg-gray-500"
 				placeholder={placeholder}
 				{...rest}
 			/>
