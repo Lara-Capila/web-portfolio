@@ -2,7 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08233b;
+  color: white;
+  overscroll-behavior: none;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    /* background-color: #d9d9d91f; /* Matches the theme */
+    background-color: #333;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* background-color: #3c84c7; /* Matches the theme */
+    background-color: #666;
+    border-radius: 5px;
+  }
+}
+
+/* :root {
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
 	--background-end-rgb: 255, 255, 255;
@@ -24,8 +46,8 @@ body {
 			rgb(var(--background-end-rgb))
 		)
 		rgb(var(--background-start-rgb));
-}
+} */
 
 .input {
-	@apply bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5;
+  @apply bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5;
 }
