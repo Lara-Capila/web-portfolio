@@ -50,3 +50,14 @@ export const workExperienceData = [
     ],
   },
 ];
+
+export const projects = [
+  {
+    title: "",
+    gitLink: "",
+    liveLink: "",
+    about: "",
+    stack: ["next.js", "typescript", "framer motion", "tailwindcss"],
+    img: "",
+  },
+];
