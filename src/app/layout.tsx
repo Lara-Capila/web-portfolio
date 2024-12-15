@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import ActiveSectionContextProvider from "../context/ActiveSection";
 
+import Header from "@components/Header";
 import "./globals.css";
 
 const kumbhSans = Kumbh_Sans({ subsets: ["latin"] });
