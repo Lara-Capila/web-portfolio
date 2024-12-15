@@ -1,5 +1,5 @@
-import Timeline from "./Timeline/Timeline";
-import Title from "./ui/Title";
+import Title from "@components/ui/Title";
+import Timeline from "@components/work-experience-section/Timeline/Timeline";
 
 export const WorkExperience = () => {
   return (

@@ -1,14 +1,14 @@
 "use client";
 
+import { GithubLink } from "@components/GithubLink";
+import { LinkedinLink } from "@components/LinkedinLink";
+import { WhatsAppLink } from "@components/WhatsAppLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { navLinks } from "../utils/data";
-import { GithubLink } from "./GithubLink";
-import { LinkedinLink } from "./LinkedinLink";
+import { navLinks } from "../../utils/data";
 import { MenuIconButton } from "./MenuIconButton";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
-import { WhatsAppLink } from "./WhatsAppLink";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);

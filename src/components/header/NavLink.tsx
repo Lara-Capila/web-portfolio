@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { useActiveSectionContext } from "../context/ActiveSection";
-import { NavLinkProps } from "../utils/types";
+import { useActiveSectionContext } from "../../context/ActiveSection";
+import { NavLinkProps } from "../../utils/types";
 
 const NavLink = ({ href, title }: NavLinkProps) => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =

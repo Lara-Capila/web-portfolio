@@ -1,7 +1,7 @@
-import { GithubLink } from "./GithubLink";
-import { MenuIcon } from "./icons/MenuIcon";
-import { LinkedinLink } from "./LinkedinLink";
-import { WhatsAppLink } from "./WhatsAppLink";
+import { GithubLink } from "../GithubLink";
+import { MenuIcon } from "../icons/MenuIcon";
+import { LinkedinLink } from "../LinkedinLink";
+import { WhatsAppLink } from "../WhatsAppLink";
 
 export const MenuIconButton = ({
   onClick,

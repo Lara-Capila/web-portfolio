@@ -1,8 +1,8 @@
 import React, { SetStateAction } from "react";
 
 import { motion } from "framer-motion";
-import { useActiveSectionContext } from "../context/ActiveSection";
-import { navLinks } from "../utils/data";
+import { useActiveSectionContext } from "../../context/ActiveSection";
+import { navLinks } from "../../utils/data";
 import NavLink from "./NavLink";
 
 const MobileNavbar = ({

@@ -1,10 +1,10 @@
 "use client";
 
+import AnimatedBody from "@components/ui/AnimatedBody";
+import AnimatedTitle from "@components/ui/AnimatedTitle";
 import { Syne } from "next/font/google";
 import Link from "next/link";
-import { useSectionInView } from "../hooks/useSectionInView";
-import AnimatedBody from "./ui/AnimatedBody";
-import AnimatedTitle from "./ui/AnimatedTitle";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 const syne = Syne({ subsets: ["latin"] });
 

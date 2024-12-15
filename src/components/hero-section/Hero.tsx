@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { useSectionInView } from "../hooks/useSectionInView";
+import { useSectionInView } from "../../hooks/useSectionInView";
 
 const handWaveAnimation = {
   rotate: [
@@ -80,7 +80,7 @@ const Hero = () => {
             className="col-span-3"
           >
             <Image
-              src="/hand-wave.svg"
+              src="/svgs/hand-wave.svg"
               width={30}
               height={30}
               alt="hand-waving"

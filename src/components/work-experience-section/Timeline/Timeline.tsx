@@ -1,4 +1,4 @@
-import { workExperienceData } from "../../utils/data";
+import { workExperienceData } from "../../../utils/data";
 import TimelineItem from "./TimelineItem";
 
 export default function Timeline() {

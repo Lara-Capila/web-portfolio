@@ -18,7 +18,7 @@ export default function TimelineItem({
   return (
     <div className="flex items-start gap-4 relative duration-1000">
       <Image
-        src="/position-icon.svg"
+        src="/svgs/position-icon.svg"
         width={24}
         height={24}
         alt="current"
