@@ -1,32 +1,57 @@
 "use client";
 
-import Input from "@components/Input";
-import Label from "@components/Label";
-import SubmitFormButton from "@components/SubmitButton";
-import Image from "next/image";
-import Link from "next/link";
-import GithubIcon from "public/github-icon.svg";
-import LinkedinIcon from "public/linkedin-icon.svg";
-import WhatsAppIcon from "public/whatsapp-icon.svg";
-import { FormEventHandler, useState } from "react";
+import { GithubLink } from "@components/GithubLink";
+import { LinkedinLink } from "@components/LinkedinLink";
+import { InputField } from "@components/ui/form/InputField";
+import Title from "@components/ui/Title";
+import { WhatsAppLink } from "@components/WhatsAppLink";
+import { AnimatePresence, motion } from "framer-motion";
+import { Syne } from "next/font/google";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useSectionInView } from "../../hooks/useSectionInView";
+
+const syne = Syne({ subsets: ["latin"] });
+
+interface FormData {
+  userName?: string;
+  userEmail?: string;
+  userMessage?: string;
+}
+
+const defaultValues: FormData = {
+  userEmail: undefined,
+  userMessage: undefined,
+  userName: undefined,
+};
 
 const Contact = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const {
+    formState: { errors },
+    register,
+    handleSubmit,
+    reset,
+  } = useForm<FormData>({
+    defaultValues,
+  });
+
   const { ref } = useSectionInView("Contato");
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const onSubmit = async (data: FormData) => {
     setLoading(true);
 
-    const data = {
-      email: event.currentTarget.email.value,
-      subject: event.currentTarget.subject.value,
-      message: event.currentTarget.message.value,
+    const bodyData = {
+      email: data.userEmail,
+      subject: `${data.userName} enviou uma mensagem através do portifólio`,
+      message: data.userMessage,
     };
-    const JSONdata = JSON.stringify(data);
+
+    const JSONdata = JSON.stringify(bodyData);
     const endpoint = "/api/send";
 
     const options = {
@@ -50,85 +75,95 @@ const Contact = () => {
     <section
       ref={ref}
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 gap-4 relative"
+      className="grid md:grid-cols-2 my-12 md:my-12 gap-4 relative pt-[110px]"
     >
-      <div>
-        <h5 className="text-xl font-bold text-white my-2">
-          Vamos nos conectar!
-        </h5>
-        <p className="text-grayText mb-4 max-w-md">
+      <div className="mb-6">
+        <Title>Vamos nos conectar!</Title>
+        <p className="mb-4 sm:max-w-md max-w-xs text-lg mt-6">
           Minha caixa de entrada está sempre aberta. Se você tiver alguma
           pergunta ou apenas quiser dizer olá, farei o meu melhor para
           responder!
         </p>
         <div className="socials flex items-center flex-row gap-4">
-          <Link
-            href="https://github.com/Lara-Capila"
-            className="hover:scale-110"
-            target="_blank"
-          >
-            <Image src={GithubIcon} alt="GitHub icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/lara-capila/" target="_blank">
-            <Image
-              src={LinkedinIcon}
-              alt="Linkedin icon"
-              className="hover:scale-110"
-            />
-          </Link>
-          <Link
-            href="https://wa.me/5531989201693"
-            className="ml-1"
-            target="_blank"
-          >
-            <Image
-              src={WhatsAppIcon}
-              alt="WhatsApp icon"
-              className="hover:scale-110"
-              width={40}
-              height={40}
-            />
-          </Link>
+          <GithubLink />
+          <LinkedinLink />
+          <WhatsAppLink />
         </div>
       </div>
 
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-base mt-2">
-            Email enviado com sucesso!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <Input
-              name="email"
-              id="email"
-              placeholder="teste@teste.com"
-              label="Seu email"
-              disabled={loading}
-              type="email"
-            />
-            <Input
-              name="subject"
-              id="subject"
-              placeholder="Diga oi"
-              label="Assunto"
-              disabled={loading}
-            />
-            <div className="mb-6">
-              <Label htmlFor="message">Mensagem</Label>
-              <textarea
-                name="message"
-                id="message"
-                className="input data-[disabled=true]:bg-gray-500"
-                placeholder="Vamos conversar..."
-                maxLength={500}
-                disabled={loading}
-                data-disabled={loading}
-              />
+      <div className="overflow-y-hidden card px-6 py-4 md:py-10 lg:py-12 flex flex-col lg:items-center lg:flex-row justify-between rounded-2xl bg-gradient-to-r from-[#d9d9d91f] to-[#7373731f]">
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            exit={{ opacity: 0 }}
+            className="w-full"
+          >
+            <div className="flex items-center h-full gap-2 w-full">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit(onSubmit)}
+                className={`back w-full flex flex-col gap-3 grow-[2] basis-0`}
+              >
+                <div className="flex gap-1 flex-col">
+                  <InputField
+                    id="userName"
+                    errors={errors}
+                    {...register("userName", {
+                      required: "I need to know your name",
+                      pattern: {
+                        value: /^[a-zA-Z][a-zA-Z0-9]{2,}/,
+                        message: "Please enter a valid name.",
+                      },
+                    })}
+                  />
+                </div>
+                <div className="flex gap-1 flex-col">
+                  <InputField
+                    id="userEmail"
+                    errors={errors}
+                    type="email"
+                    {...register("userEmail", {
+                      required: "Enter a correct email address",
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Please provide a valid email address",
+                      },
+                    })}
+                  />
+                </div>
+                <div className="flex gap-1 flex-col">
+                  <label
+                    htmlFor="userMessage"
+                    className="opacity-70 text-sm lg:text-base"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="userMessage"
+                    {...register("userMessage", {
+                      required: "I'll appreciate what you have to say.",
+                    })}
+                    rows={4}
+                    cols={50}
+                    className="bg-transparent rounded-md border border-[#737373c4] focus:border-[#9f9d9dc4] outline-none py-1 pl-2"
+                  />
+                  {errors?.userMessage && (
+                    <span className="text-red-400 text-xs">
+                      {errors?.userMessage?.message as string}
+                    </span>
+                  )}
+                </div>
+                <button
+                  className={`rounded-md bg-gradient-to-r from-[#d9d9d91f] to-[#7373731f] py-3 px-5 ${syne.className} font-bold uppercase mt-4`}
+                >
+                  Enviar
+                </button>
+              </form>
             </div>
-            <SubmitFormButton loading={loading} />
-          </form>
-        )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
