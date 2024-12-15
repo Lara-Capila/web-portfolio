@@ -8,6 +8,7 @@ import { LinkedinLink } from "./LinkedinLink";
 import { MenuIconButton } from "./MenuIconButton";
 import MobileNavbar from "./MobileNavbar";
 import NavLink from "./NavLink";
+import { WhatsAppLink } from "./WhatsAppLink";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -34,6 +35,7 @@ const Navbar = () => {
           <div className="gap-5 text-xl hidden sm:flex">
             <LinkedinLink />
             <GithubLink />
+            <WhatsAppLink />
           </div>
         </nav>
       </motion.div>

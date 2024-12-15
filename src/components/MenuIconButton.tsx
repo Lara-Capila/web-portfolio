@@ -1,6 +1,7 @@
 import { GithubLink } from "./GithubLink";
 import { MenuIcon } from "./icons/MenuIcon";
 import { LinkedinLink } from "./LinkedinLink";
+import { WhatsAppLink } from "./WhatsAppLink";
 
 export const MenuIconButton = ({
   onClick,
@@ -14,6 +15,7 @@ export const MenuIconButton = ({
       <div className="gap-5 text-xl flex">
         <LinkedinLink />
         <GithubLink />
+        <WhatsAppLink />
       </div>
 
       <button
