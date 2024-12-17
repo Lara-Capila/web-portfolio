@@ -49,7 +49,7 @@ const About = () => {
             <Link
               className="underline ml-2"
               href={
-                "https://drive.google.com/file/d/1Rd-IB_5pxsGj4RDtHjEggPB392ND29xB/view?usp=sharing"
+                "https://drive.google.com/file/d/19cjc9W1iLUWQnRHmrD3OiwxH6WgtP9dy/view?usp=sharing"
               }
             >
               meu currículo
