@@ -17,7 +17,7 @@ const Contact = () => {
     >
       <div>
         <Title>Vamos nos conectar!</Title>
-        <p className="mb-4 sm:max-w-md max-w-xs text-lg mt-6">
+        <p className="mb-4 sm:max-w-md max-w-xs text-lg">
           Minha caixa de entrada está sempre aberta. Se você tiver alguma
           pergunta ou apenas quiser dizer olá, farei o meu melhor para
           responder!
