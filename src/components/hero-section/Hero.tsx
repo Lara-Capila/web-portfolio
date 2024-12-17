@@ -119,8 +119,8 @@ const Hero = () => {
           <Image
             src="/images/eu.jpeg"
             alt="working"
-            width={400}
-            height={400}
+            width={300}
+            height={300}
             quality="95"
             className="w-96 h-96 shadow-md shadow-slate-500 border border-white rounded-lg object-cover"
           />

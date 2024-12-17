@@ -4,6 +4,9 @@ import Hero from "@components/hero-section/Hero";
 import Projects from "@components/projects-section/Projects";
 import { WorkExperience } from "@components/work-experience-section/WorkExperience";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Home() {
   return (
     <main>
@@ -12,6 +15,7 @@ export default function Home() {
       <About />
       <Projects />
       <Contact />
+      <ToastContainer />
     </main>
   );
 }
